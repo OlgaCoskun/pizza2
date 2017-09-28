@@ -18,3 +18,25 @@ function add_to_cart(id)
     window.localStorage.setItem(key, x);
 }
 
+//calculate total number of items in cart
+
+function cart_get_number_of_items()
+{
+    var cnt = 0;
+
+    for(var i = 0; i < window.localStorage.length; i++)
+    {
+        var key = window.localStorage.key(i); //получаем клчю
+        var value = window.localStorage.getItem(key); //получаем значение, аналог в ruby hh['key'] = x
+
+        if(key.indexOF('product_') == 0)
+        {
+            cnt++;
+        }
+    }
+
+    return cnt + value * 1;
+}
+
+
+
