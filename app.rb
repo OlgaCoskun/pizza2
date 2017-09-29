@@ -7,8 +7,11 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:pizza2.db"
 
 class Product < ActiveRecord::Base
-
 end
+
+class Order < ActiveRecord::Base
+end
+
 
 
 get '/' do
@@ -31,6 +34,11 @@ post '/cart' do
 
   erb :cart
 end
+
+post '/place_order' do
+    erb :place_order
+end
+
 
 
 def parse_orders_input orders_input
