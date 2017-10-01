@@ -74,9 +74,14 @@ function cart_get_orders()
     return orders;
 }
 
+//очищаем корзину по кнопке Cansel
 function cansel_order()
 {
-    alert('aaa');
+    window.localStorage.clear();
+
+    update_orders_input();
+    update_orders_button();
+
     return false;
 }
 
