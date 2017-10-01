@@ -1,14 +1,3 @@
-function something()
-    {
-        var x = window.localStorage.getItem('bbb'); //x = hh['bbb']
-
-        x = x * 1 + 1; //x = x + 1
-
-        window.localStorage.setItem('bbb', x); //hh['bbb'] = x
-
-        alert(x);
-    }
-
 function add_to_cart(id)
 {
     var key = 'product_' + id;
@@ -21,13 +10,11 @@ function add_to_cart(id)
     update_orders_button();
 }
 
-
 function update_orders_input()
 {
     var orders = cart_get_orders();
     $('#orders_input').val(orders);
 }
-
 
 function update_orders_button()
 {
@@ -35,25 +22,22 @@ function update_orders_button()
     $('#orders_button').val(text);
 }
 
-
-//calculate total number of items in cart
-
 function cart_get_number_of_items()
 {
     var cnt = 0;
 
     for(var i = 0; i < window.localStorage.length; i++)
     {
-        var key = window.localStorage.key(i); //получаем клчю
-        var value = window.localStorage.getItem(key);  //получаем значение, аналог в ruby hh['key'] = x
+        var key = window.localStorage.key(i); // получаем ключ
+        var value = window.localStorage.getItem(key); // получаем значение, аналог в ruby: hh[key] = x
 
         if(key.indexOf('product_') == 0)
         {
-            cnt++;
+            cnt = cnt + value * 1;
         }
     }
 
-    return cnt + value * 1;
+    return cnt;
 }
 
 function cart_get_orders()
@@ -62,8 +46,8 @@ function cart_get_orders()
 
     for(var i = 0; i < window.localStorage.length; i++)
     {
-        var key = window.localStorage.key(i); //получаем клчю
-        var value = window.localStorage.getItem(key); //получаем значение, аналог в ruby hh['key'] = x
+        var key = window.localStorage.key(i); // получаем ключ
+        var value = window.localStorage.getItem(key); // получаем значение, аналог в ruby: hh[key] = x
 
         if(key.indexOf('product_') == 0)
         {
@@ -74,7 +58,6 @@ function cart_get_orders()
     return orders;
 }
 
-//очищаем корзину по кнопке Cansel
 function cancel_order()
 {
     window.localStorage.clear();
@@ -86,6 +69,3 @@ function cancel_order()
 
     return false;
 }
-
-
-
